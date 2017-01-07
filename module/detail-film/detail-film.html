@@ -20,7 +20,7 @@
                             <div class="product-image product-image-zoom">
                                 <div class="product-image-gallery">
                                     <a href="#movie-trailer" class="movie-trailer">
-                                        <img id="image-main" class="visible" src="{{vm.film.photo}}" alt="MTOB _ {{vm.film.name}}" title="MTOB _ {{vm.film.name}}">
+                                        <img id="image-main" class="visible" ng-src="{{vm.film.photo}}" alt="MTOB _ {{vm.film.name}}" title="MTOB _ {{vm.film.name}}" style="height: inherit; width: inherit;">
                                     </a>
                                 </div>
 
@@ -75,7 +75,7 @@
                         </div>
 
 
-                        <div class="add-to-cart-wrapper">
+                        <div class="add-to-cart-wrapper" style="top: 0px;">
                             <div class="add-to-box">
                                 <button type="button" title="BOOKING" class="button btn-booking" ng-click="vm.showModalSchedule(vm.film.name, vm.film.code)"><span><span>BOOKING</span></span></button>
                                 <button type="button" title="BOOKING" class="button btn-booking" ng-click="vm.showTrailer()"><span><span>TRAILER</span></span></button>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="modal-body" style="padding: 0px;">
                     <div class="std product_view_trailer">
-                        <iframe id="ifTrailer" width="100%" height="468px" src="{{vm.film.trailer}}" frameborder="0" allowfullscreen=""></iframe>
+                        <iframe id="ifTrailer" width="100%" height="468px" frameborder="0" allowfullscreen=""></iframe>
                     </div>
                 </div>
             </div>

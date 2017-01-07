@@ -45,7 +45,7 @@
 
                     <div class="carousel-inner" role="listbox">
                         <div ng-repeat="data in vm.theaterToShowModal.photos" ng-class="($index==0?'item active': 'item')">
-                            <img src="{{data.link}}" class="img-responsive">
+                            <img ng-src="{{data.link}}" class="img-responsive">
                         </div>
                     </div>
                 </div>

@@ -1,10 +1,11 @@
 <div ng-controller="filmController" data-ng-init="vm.init()">
+    <!--<div layout="row">-->
     <div layout="row">
-        <div flex="10"></div>
-        <ul class="tab_img_cus">
+        <!--<div flex="10"></div>-->
+        <ul class="tab_img_cus" style="margin: auto;">
             <li ng-repeat="film in vm.films" style="margin: 20px; border:gray solid 1px; background: white;" layout="column" flex>
                 <div class="view view-first" style="cursor: pointer;">
-                    <img src="{{film.photo}}" ng-click="vm.showDetailFilm(film)" class="img-responsive" alt="" style="max-width:100%; max-height:100%" />
+                    <img ng-src="{{film.photo}}" ng-click="vm.showDetailFilm(film)" class="img-responsive" alt="" style="max-width:100%; max-height:100%" />
                     <div class="info1"> </div>
                     <div class="mask">
                     </div>
@@ -19,7 +20,7 @@
                 </div>
             </li>
         </ul>
-        <div flex="10"></div>
+        <!--<div flex="10"></div>-->
     </div>
     <div class="modal fade" id="modalBooking" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">

@@ -58,6 +58,7 @@ filmApp.controller('detailFilmController', function($scope, $http, $state, $stat
         'id': 'CCC',
         'name': 'IMax'
     }];
+    var typeOfFilmId = [];
     var formatFilmCurrent = '';
 
     //use this array to access schedule choose faster
@@ -109,25 +110,38 @@ filmApp.controller('detailFilmController', function($scope, $http, $state, $stat
     }
 
     function showModalSchedule(filmName, filmCode) {
-        // filmSchedule.length = 0;
-        // FilmService.getSchedule(codeFilm).then(function (data) {
-        // });
         $('#loading').show();
         vm.nameFilmBooking = filmName;
         var url = 'https://movie2016.herokuapp.com' + '/api/v1/schedules?movie-code=' + filmCode;
         $http.get(url).then(function(res) {
+            var flagDataNotNull = false;
+            _.each(res.data.data, function(itemData) {
+                if (!angular.equals([], itemData.data)) {
+                    flagDataNotNull = true;
+                    return;
+                }
+            });
+            if (!flagDataNotNull) {
+                $('#loading').hide();
+                setTimeout(function() {
+                    $('#modalAlertMessage').text('Schedule film not found!');
+                    $('#smallModalAlert').modal();
+                }, 200);
+                return;
+            }
+
             lstCityCode.length = 0;
             scheduleConverted.length = 0;
             scheduleAllDay.length = 0;
             vm.filmSchedule.length = 0;
-            vm.typeOfFilm = [];
+            vm.typeOfFilm.length = 0;
+            typeOfFilmId.length = 0;
             var obj = {
                 'cityName': 'Ho Chi Minh',
                 'cityCode': 'HCM',
                 'schedule': []
             };
             _.each(res.data.data, function(itemData) { //data of each date
-
                 if (itemData !== null) {
                     // var obj = new objSchedule();
 
@@ -231,7 +245,7 @@ filmApp.controller('detailFilmController', function($scope, $http, $state, $stat
                                 } else {
                                     match.CCC.push(tmp5);
                                 }
-                                break;
+                                // break;
                             }
                             if (_.findWhere(vm.typeOfFilm, { id: dataEachDate.prices[0].version_code }) == null) {
                                 var tmp6 = {
@@ -240,6 +254,14 @@ filmApp.controller('detailFilmController', function($scope, $http, $state, $stat
                                 };
                                 vm.typeOfFilm.push(angular.copy(tmp6));
                             }
+                            // if (_.findWhere(typeOfFilmId, dataEachDate.prices[0].version_code) == null) {
+                            //     typeOfFilmId.push(dataEachDate.prices[0].version_code);
+                            //     var tmp6 = {
+                            //         'id': dataEachDate.prices[0].version_code,
+                            //         'name': dataEachDate.prices[0].version_name
+                            //     };
+                            //     vm.typeOfFilm.push(angular.copy(tmp6));
+                            // }
                         }
                     });
 
@@ -456,6 +478,7 @@ filmApp.controller('filmController', function($scope, $http, $state, $stateParam
         'id': 'CCC',
         'name': 'IMax'
     }];
+    var typeOfFilmId = [];
     var formatFilmCurrent = '';
 
     //use this array to access schedule choose faster
@@ -495,25 +518,38 @@ filmApp.controller('filmController', function($scope, $http, $state, $stateParam
     var scheduleAllDay = [];
 
     function showModalSchedule(filmName, filmCode) {
-        // filmSchedule.length = 0;
-        // FilmService.getSchedule(codeFilm).then(function (data) {
-        // });
         $('#loading').show();
         vm.nameFilmBooking = filmName;
         var url = 'https://movie2016.herokuapp.com' + '/api/v1/schedules?movie-code=' + filmCode;
         $http.get(url).then(function(res) {
+            var flagDataNotNull = false;
+            _.each(res.data.data, function(itemData) {
+                if (!angular.equals([], itemData.data)) {
+                    flagDataNotNull = true;
+                    return;
+                }
+            });
+            if (!flagDataNotNull) {
+                $('#loading').hide();
+                setTimeout(function() {
+                    $('#modalAlertMessage').text('Schedule film not found!');
+                    $('#smallModalAlert').modal();
+                }, 200);
+                return;
+            }
+
             lstCityCode.length = 0;
             scheduleConverted.length = 0;
             scheduleAllDay.length = 0;
             vm.filmSchedule.length = 0;
-            vm.typeOfFilm = [];
+            vm.typeOfFilm.length = 0;
+            typeOfFilmId.length = 0;
             var obj = {
                 'cityName': 'Ho Chi Minh',
                 'cityCode': 'HCM',
                 'schedule': []
             };
             _.each(res.data.data, function(itemData) { //data of each date
-
                 if (itemData !== null) {
                     // var obj = new objSchedule();
 
@@ -617,7 +653,7 @@ filmApp.controller('filmController', function($scope, $http, $state, $stateParam
                                 } else {
                                     match.CCC.push(tmp5);
                                 }
-                                break;
+                                // break;
                             }
                             if (_.findWhere(vm.typeOfFilm, { id: dataEachDate.prices[0].version_code }) == null) {
                                 var tmp6 = {
@@ -626,6 +662,14 @@ filmApp.controller('filmController', function($scope, $http, $state, $stateParam
                                 };
                                 vm.typeOfFilm.push(angular.copy(tmp6));
                             }
+                            // if (_.findWhere(typeOfFilmId, dataEachDate.prices[0].version_code) == null) {
+                            //     typeOfFilmId.push(dataEachDate.prices[0].version_code);
+                            //     var tmp6 = {
+                            //         'id': dataEachDate.prices[0].version_code,
+                            //         'name': dataEachDate.prices[0].version_name
+                            //     };
+                            //     vm.typeOfFilm.push(angular.copy(tmp6));
+                            // }
                         }
                     });
 
@@ -800,35 +844,13 @@ filmApp.controller('homeController', function($scope, $http, $state, $stateParam
         $('#liHome').addClass('active');
         $('#liTheater').removeClass('active');
         FilmService.getFilm('showing').then(function(data) {
-            // $("#flexiselDemo1").flexisel({
-            //     visibleItems: 5,
-            // animationSpeed: 1000,
-            // autoPlay: true,
-            // autoPlaySpeed: 3000,
-            // pauseOnHover: false,
-            // enableResponsiveBreakpoints: true,
-            // responsiveBreakpoints: {
-            //     portrait: {
-            //         changePoint: 480,
-            //         visibleItems: 2
-            //     },
-            //     landscape: {
-            //         changePoint: 640,
-            //         visibleItems: 3
-            //     },
-            //     tablet: {
-            //         changePoint: 800,
-            //         visibleItems: 4
-            //     }
-            // }
-            // });
             vm.films = data;
         });
         var urlMarketing = 'https://movie2016.herokuapp.com/api/v1/slider';
         $http.get(urlMarketing).then(function(res) {
             vm.marketing = res.data.data;
-            vm.titleMarketing = vm.marketing[1].title;
-            vm.descMarketing = vm.marketing[1].description;
+            // vm.titleMarketing = vm.marketing[1].title;
+            // vm.descMarketing = vm.marketing[1].description;
             $('#titleMarketing').text(vm.marketing[0].title);
             $('#descMarketing').text(vm.marketing[0].description);
         });
