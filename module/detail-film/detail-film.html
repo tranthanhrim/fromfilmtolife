@@ -1,0 +1,176 @@
+<div ng-controller="detailFilmController" data-ng-init="vm.init()">
+    <div class="main">
+        <div class="col-main">
+            <div class="product-view events-">
+                <div class="category-title">
+                    <span class="h1">Movie Details</span>
+                </div>
+                <div class="product-essential">
+                    <form action="https://www.cgv.vn/vn/checkout/cart/add/uenc/aHR0cHM6Ly93d3cuY2d2LnZuL3ZuL2NoYXktZGktcm9pLXRpbmguaHRtbA,,/product/1862/form_key/4Ge35k0daCgZotOz/" method="post" id="product_addtocart_form">
+                        <input name="form_key" type="hidden" value="4Ge35k0daCgZotOz">
+                        <div class="no-display">
+                            <input type="hidden" name="product" value="1862">
+                            <input type="hidden" name="related_product" id="related-products-field" value="">
+                        </div>
+
+                        <div class="product-img-box">
+                            <div class="product-name">
+                                <h1>{{vm.film.name}}</h1>
+                            </div>
+                            <div class="product-image product-image-zoom">
+                                <div class="product-image-gallery">
+                                    <a href="#movie-trailer" class="movie-trailer">
+                                        <img id="image-main" class="visible" src="{{vm.film.photo}}" alt="MTOB _ {{vm.film.name}}" title="MTOB _ {{vm.film.name}}">
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="product-shop">
+                            <div class="product-name">
+                                <span class="h1">{{vm.film.name}}</span>
+                            </div>
+
+                            <div class="movie-director movie-info">
+                                <label>Director: </label>
+                                <div class="std">
+                                    {{vm.film.director}}</div>
+                            </div>
+
+                            <div class="movie-actress movie-info">
+                                <label>Cast:</label>
+                                <div class="std">{{vm.film.actor}}</div>
+                            </div>
+
+                            <div class="movie-genre movie-info">
+                                <label>Genre: </label>
+                                <div class="std">
+                                    {{vm.film.genre}}</div>
+                            </div>
+
+                            <div class="movie-release movie-info">
+                                <label>Release Date: </label>
+                                <div class="std">
+                                    {{vm.film.start_time}}</div>
+                            </div>
+
+                            <div class="movie-actress movie-info">
+                                <label>Running Time: </label>
+                                <div class="std">
+                                    {{vm.film.duration}}</div>
+                            </div>
+
+                            <div class="movie-language movie-info">
+                                <label>Language: </label>
+                                <div class="std">
+                                    {{vm.film.lang.lang_name}}</div>
+                            </div>
+
+                            <div class="movie-actress movie-info">
+                                <label>Description:</label>
+                                <div class="std">
+                                    {{vm.film.description}}</div>
+                            </div>
+                        </div>
+
+
+                        <div class="add-to-cart-wrapper">
+                            <div class="add-to-box">
+                                <button type="button" title="BOOKING" class="button btn-booking" ng-click="vm.showModalSchedule(vm.film.name, vm.film.code)"><span><span>BOOKING</span></span></button>
+                                <button type="button" title="BOOKING" class="button btn-booking" ng-click="vm.showTrailer()"><span><span>TRAILER</span></span></button>
+                            </div>
+
+                            <div class="movie-technology-icons">
+                                <span class="movie-rating movie-rating-nc16"></span>
+
+                                <a href="javascript: void(0);" class="icon-2d icon">2D</a>
+
+                            </div>
+                        </div>
+                        <div class="clearer"></div>
+                    </form>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div id="modalTrailer" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="vm.hideTrailer()">
+                      &times;</button>
+                    <h4 class="modal-title" id="myModalLabel">
+                        Trailer {{vm.film.name}}</h4>
+                </div>
+                <div class="modal-body" style="padding: 0px;">
+                    <div class="std product_view_trailer">
+                        <iframe id="ifTrailer" width="100%" height="468px" src="{{vm.film.trailer}}" frameborder="0" allowfullscreen=""></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modalBooking" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">{{vm.nameFilmBooking}}</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-pills">
+                        <li ng-repeat="data in vm.typeOfFilm" ng-class="{'active': $index == 0}" ng-click="vm.changeFormatFilm(data.id)"><a data-toggle="pill">{{data.name}}</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="theatre-list">
+                            <div class="product-collateral toggle-content tabs theatre-city-tabs">
+                                <ul class="toggle-tabs nav nav-tabs">
+                                    <li class="theater-modal" ng-class="{'active': $index == 0}" ng-repeat="data in vm.filmSchedule" ng-click="vm.changeCityShowSchedule(data.cityCode)">
+                                        <a data-toggle="tab"><span>{{data.cityName}}</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="product-collateral toggle-content tabs session-tabs" style="background: none;">
+                            <ul class="toggle-tabs" ng-init="vm.dateIdSelected=0">
+                                <li ng-repeat="date in vm.scheduleToShow.date" ng-class="{'current':vm.dateIdSelected==$index}" ng-click="vm.changeDateShowSchedule(date.rawDate, $index)">
+                                    <div class="day" style="border: 2px solid #07575B;">
+                                        <span>{{date.day}}</span>
+                                        <em>{{date.dayOfWeek}}</em>
+                                        <strong>{{date.month}}</strong>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product-collateral toggle-content tabs session-tabs" style="background: none;">
+                            <ul class="session-list" ng-repeat="data in vm.scheduleToShow.schedule">
+                                <li class="area" style="padding: 0px 0px 25px 0px">
+                                    <div class="col-theater"><label>{{data.theaterName}}</label></div>
+                                    <div class="col-times">
+                                        <div class="type-hall">
+                                            <div class="info-timetable">
+                                                <ul>
+                                                    <li class="hvp-cinema-6" ng-repeat="data in data.time" ng-click="vm.bookTicket(data)">
+                                                        <a title="Cinema 6"><span class="session-detail-time">{{data.time}}</span><span class="session-detail-meridiem">{{data.period}}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

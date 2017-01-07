@@ -1,0 +1,74 @@
+<div ng-controller="seatController" data-ng-init="vm.init()">
+    <div class="main">
+        <div class="demo">
+            <div style="width: 100%">
+                <div layout="row">
+                    <div flex></div>
+                    <div class="front" style="width: 50%;">SCREEN</div>
+                    <div flex></div>
+                </div>
+
+                <div layout="row">
+                    <div flex></div>
+                    <div id="seat-map" layout-align="center">
+                    </div>
+                    <!--<div flex></div>-->
+                    <div flex class="booking-details" style="margin-left: 20px">
+                        <ul class="book-left">
+                            <li style="height: 60px;">Movie </li>
+                            <li>Quantity</li>
+                            <li>Tickets</li>
+                            <!--<li>Total</li>-->
+                            <!--<li>Seats :</li>-->
+                        </ul>
+                        <ul class="book-right">
+                            <li>: {{vm.scheduleInfo.filmName}}</li>
+                            <li>: {{vm.scheduleInfo.date}} {{vm.scheduleInfo.time}}</li>
+                            <li>: <span id="counter">0</span></li>
+                            <li>: <b><span id="total">0</span><i> VND</i></b></li>
+                        </ul>
+                        <div class="clear"></div>
+                        <ul hide id="selected-seats" class="scrollbar scrollbar1"></ul>
+
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="vm.bookTicket()" style="margin-top: 10px;">Book now</button>
+                        <div id="legend"></div>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    <div id="modalAlert" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;</button>
+                    <h4 class="modal-title" id="myModalLabel">Notification</h4>
+                </div>
+                <div class="modal-body" style="padding: 0px;">
+                    <h4 style="padding: 22px; font-weight: 400;">{{vm.messageAlert}}</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modalSubmitTicket" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                        &times;</button>
+                    <h4 class="modal-title" style="text-align: center;">Submit ticket</h4>
+                </div>
+                <div class="modal-body" style="padding: 20px;">
+                    <h4 style="font-weight: 400; text-align: right;">Do you really want to book ticket?</h4>
+                    <div layout="row" style="margin-top: 5px;">
+                        <div flex></div>
+                        <button type="button" class="btn btn-primary btn-sm" ng-click="vm.submitTicket()">YES</button>
+                        <div flex></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

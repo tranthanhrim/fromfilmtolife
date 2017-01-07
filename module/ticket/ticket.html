@@ -1,0 +1,45 @@
+<div ng-controller="ticketController" data-ng-init="vm.init()">
+    <h2 style="margin-top: 30px; margin-left: 15px;">My Tickets</h2>
+    <table class="table table-bordered" style="width: 98%; margin: auto;">
+        <thead>
+            <tr style="background-color: #717171; color: #fff">
+                <!--<th>Ticket</th>-->
+                <th>Film</th>
+                <th>Theater</th>
+                <th>City</th>
+                <th>Time</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="data in vm.myTickets" style="font-size: 12px;">
+                <!--<td>JUSHHB</td>-->
+                <td>{{data.film_name}}</td>
+                <td>{{data.theatername}}</td>
+                <td>{{data.cityname}}</td>
+                <td>{{data.date}} {{data.time}}</td>
+                <td>{{data.number_ticket}}</td>
+                <td>{{data.totalprice}} VND</td>
+            </tr>
+            <!--<tr>
+                <td>JUSHHB</td>
+                <td style="width: 250px;">Phù Thủy Tối Thượng Phù Thủy Tối Thượng Phù Thủy Tối Thượng</td>
+                <td>CVG Hùng Vương Plaza</td>
+                <td>Tp Hồ Chí Minh</td>
+                <td>06/01/2017 11:00</td>
+                <td>Room 1 - Seat A1</td>
+                <td>60000 VND</td>
+            </tr>
+            <tr>
+                <td>JUSHHB</td>
+                <td>Phù Thủy Tối Thượng</td>
+                <td>CVG Hùng Vương Plaza</td>
+                <td>Tp Hồ Chí Minh</td>
+                <td>06/01/2017 11:00</td>
+                <td>Room 1 - Seat A1</td>
+                <td>60000 VND</td>
+            </tr>-->
+        </tbody>
+    </table>
+</div>

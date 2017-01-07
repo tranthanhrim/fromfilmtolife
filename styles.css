@@ -1,0 +1,200 @@
+body {
+    background: white;
+}
+
+.menu-title {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.list-of-movies {
+    width: 100%;
+    float: left;
+    padding: 0;
+    margin-left: 1%;
+}
+
+ul li {
+    cursor: pointer;
+}
+
+.span-ul-li-film {
+    width: 200px;
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+}
+
+ul.tab_img_cus {
+    padding: 0;
+    list-style: none;
+    position: relative;
+    padding: 0;
+}
+
+ul.tab_img_cus li {
+    float: left;
+    width: 200px;
+    height: 470px;
+    background: red;
+    margin: 0 2% 0 0;
+}
+
+.view.view-first img {
+    width: 100%;
+}
+
+ul.tab_img_cus li.last {
+    margin-right: 0;
+    padding: 0;
+}
+
+.toggle-tabs {
+    border-bottom: 2px solid #241d1e;
+    border-top: 2px solid #241d1e;
+    float: left;
+    min-height: 78px;
+    padding: 12px 0;
+    width: 100%;
+}
+
+.day {
+    border: 4px solid #717171;
+    border-radius: 5px;
+    color: #717171;
+    cursor: pointer;
+    height: 48px;
+    position: relative;
+    width: 77px;
+}
+
+.day-active {
+    background: #C4DFE6;
+    border: 4px solid #717171;
+    border-radius: 5px;
+    color: #717171;
+    cursor: pointer;
+    height: 48px;
+    position: relative;
+    width: 77px;
+}
+
+.theater-modal {
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+#loading {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    opacity: 0.7;
+    background-color: #fff;
+    z-index: 99;
+    text-align: center;
+}
+
+#loading-image {
+    /*position: absolute;*/
+    text-align: center;
+    top: 100px;
+    left: 240px;
+    z-index: 100;
+    margin-top: 150px;
+}
+.banner-right .caption {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    position: absolute;
+    right: 0;
+    width: 30%;
+    top: 0;
+    bottom: 0;
+    padding: 60px 25px 25px 25px;
+}
+
+.caption .desc {
+    overflow: hidden;
+    height: 13.6rem;
+    margin-bottom: 2.5rem;
+}
+
+.list-btn {
+    overflow: hidden;
+    text-align: center;
+}
+
+.account-name {
+    color: #636363;
+    font-size: 1em;
+    font-weight: 400;
+    margin-bottom: 0.5em;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.warning-input-register {
+    font-size: 12px;
+    color: red;
+    font-weight: 200;
+}
+
+.required-star {
+    color: red;
+    font-weight: 600;
+    margin-left: 10px;
+}
+.width-table {
+  width: 200px;
+}
+.carousel-fade .carousel-inner .item {
+    opacity: 0;
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity;
+}
+
+.carousel-fade .carousel-inner .active {
+    opacity: 1;
+}
+
+.carousel-fade .carousel-inner .active.left,
+.carousel-fade .carousel-inner .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+}
+
+.carousel-fade .carousel-inner .next.left,
+.carousel-fade .carousel-inner .prev.right {
+    opacity: 1;
+}
+
+.carousel-fade .carousel-control {
+    z-index: 2;
+}
+
+.span-theater-name {
+    color: #717171;
+}
+
+.span-theater-name:hover {
+    color: #07575B;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.5s;
+}
+
+.span-city-name {
+    color: #07575B;
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.5s;
+}

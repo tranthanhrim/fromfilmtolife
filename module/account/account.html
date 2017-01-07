@@ -1,0 +1,248 @@
+<div ng-controller="accountController" data-ng-init="vm.init()">
+    <div class="main">
+        <div class="col-main">
+            <div class="my-account">
+                <div class="dashboard">
+                    <div class="page-title">
+                        <h1>My Dashboard</h1>
+                    </div>
+                    <div class="welcome-msg">
+                        <p class="hello"><strong>Hello, {{vm.myAccount.username}}!</strong></p>
+                        <!--<p>From your My Account Dashboard you have the ability to view a snapshot of your recent account activity and update your account information. Select a link below to view or edit information.</p>-->
+                    </div>
+                    <div class="box-account box-info">
+                        <div class="box-head">
+                            <h2>Account Information</h2>
+                        </div>
+                        <div class="col2-set">
+                            <div class="col-1">
+                                <div class="box">
+                                    <div class="box-title">
+                                        <h3>Contact Information</h3>
+                                        <a style="color: #07575B; cursor: pointer;">Edit</a>
+                                    </div>
+                                    <div class="box-content">
+                                        <p>
+                                            <span style="float:left; width: 150px;">Username:</span>{{vm.myAccount.username}}
+                                            <br> <span style="float:left; width: 150px;">Email:</span>{{vm.myAccount.email}}
+                                            <br> <span style="float:left; width: 150px;">Birthday:</span>{{vm.myAccount.birthday}}
+                                            <br> <span style="float:left; width: 150px;">Phone:</span>{{vm.myAccount.phone}}
+                                            <br> <span style="float:left; width: 150px;">Name:</span>{{vm.myAccount.name}}
+                                            <br> <span style="float:left; width: 150px;">Address:</span>{{vm.myAccount.address}}
+                                            <br>
+                                            <!--<a>Change Password</a>-->
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--<div class="my-account">
+				<div class="page-title">
+					<h1>Edit Account Information</h1>
+				</div>
+				<form action="https://www.cgv.vn/en/customer/account/editPost/" method="post" autocomplete="off" id="form-validate" class="scaffold-form"
+					enctype="multipart/form-data">
+					<div class="fieldset">
+						<input name="form_key" type="hidden" value="afU6JzdLOhG8fg6b">
+						<h2 class="legend">Account Information</h2>
+						<p class="required">* Required Fields</p>
+						<ul class="form-list">
+							<li class="fields">
+								<div class="customer-name">
+									<div class="field name-firstname">
+										<label for="firstname" class="required"><em>*</em>First Name</label>
+										<div class="input-box">
+											<input type="text" id="firstname" name="firstname" value="Rim" title="First Name" maxlength="255" class="input-text required-entry validate-no-html-tags">
+										</div>
+									</div>
+									<div class="field name-lastname">
+										<label for="lastname" class="required"><em>*</em>Last Name</label>
+										<div class="input-box">
+											<input type="text" id="lastname" name="lastname" value="Tran" title="Last Name" maxlength="255" class="input-text required-entry  validate-no-html-tags">
+										</div>
+									</div>
+								</div>
+							</li>
+							<li>
+								<label for="email" class="required"><em>*</em>Email Address</label>
+								<div class="input-box">
+									<input type="email" autocapitalize="off" autocorrect="off" spellcheck="false" name="email" id="email" value="tranthanhrim1995@gmail.com"
+										title="Email Address" class="input-text required-entry validate-email">
+								</div>
+							</li>
+							<li><label for="month" class="required"><em>*</em>Date of Birth</label>
+								<div class="input-box customer-dob">
+									<div class="customer-dob-content">
+									</div>
+									<span class="dob-month"><span style="max-width: 100%; height: 25px; float: left; width: 365px; font-size: 15px; text-align: center;">04</span>
+									<input type="hidden" id="month" name="month" value="04" title="Month" class="input-text validate-custom" disabled="">
+									</span><span class="dob-day"><span style="max-width: 100%; height: 25px; float: left; width: 365px; font-size: 15px; text-align: center;">20</span>
+									<input type="hidden" id="day" name="day" value="20" title="Day" class="input-text validate-custom" disabled="">
+									</span><span class="dob-year"><span style="max-width: 100%; height: 25px; float: left; width: 365px; font-size: 15px; text-align: center;">1995</span>
+									<input type="hidden" id="year" name="year" value="1995" title="Year" class="input-text validate-custom" disabled="" autocomplete="off">
+									</span>
+									<span class="dob-full" style="display:none;"><input type="hidden" id="full" name="dob"></span>
+
+									<div class="validation-advice" id="date-advice" style="opacity:0.999999; display:none; float: left;"></div>
+								</div>
+								<script type="text/javascript">
+                                    var customer_dob = new Varien.DateElement('id', '', true, '%m/%e/%Y');
+                                </script>
+							</li>
+							<li><label for="gender" class="required"><em>*</em>Gender</label>
+								<div class="input-box">
+									<select id="gender" name="gender" title="Gender" class="validate-select">
+                                        <option value=""></option>
+                                        <option value="1" selected="selected">Male</option>
+                                        <option value="2">Female</option>
+                                    </select>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="fieldset">
+						<ul class="form-list">
+							<li class="customer-user-attributes">
+								<ul class="form-list">
+									<li><label for="personal_id" class="required"><em>*</em>Personal ID/ Passport</label>
+										<div class="input-box">
+											<span>025357396</span>
+											<input type="hidden" id="personal_id" name="personal_id" value="025357396" class="input-text required-entry validate-alphanum validate-length maximum-length-12 validate-no-html-tags">
+
+										</div>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+					<div class="fieldset">
+						<ul class="form-list">
+							<li class="fields">
+								<div class="field">
+									<label for="telephone" class="required"><em>*</em>Telephone</label>
+									<div class="input-box">
+										<span>0988617518</span>
+										<input type="hidden" name="telephone" value="0988617518" title="Telephone" class="input-text   required-entry" id="telephone">
+									</div>
+								</div>
+							</li>
+							<li class="wide">
+								<label for="street_1" class="required"><em>*</em>Street Address</label>
+								<div class="input-box">
+									<input type="text" name="street[]" value="Le Minh Nhat" title="Street Address" id="street_1" class="input-text  required-entry">
+								</div>
+							</li>
+							<li class="fields">
+								<div class="field">
+									<label for="region_id" class="required"><em>*</em>City</label>
+									<div class="input-box">
+										<select onchange="loadDistrict(this, 'city');" id="region_id" name="region_id" title="City" class="validate-select required-entry"
+											defaultvalue="485">
+                           <option value="">Please select City</option>
+                        <option value="487">An Giang"</option><option value="488">Ba Ria-Vung Tau</option><option value="490">Bac Giang</option><option value="491">Bac Kan</option><option value="489">Bac Lieu</option><option value="492">Bac Ninh</option><option value="493">Ben Tre</option><option value="494">Binh Dinh</option><option value="495">Binh Duong</option><option value="496">Binh Phuoc</option><option value="497">Binh Thuan</option><option value="498">Ca Mau</option><option value="499">Can Tho</option><option value="500">Cao Bằng</option><option value="501">Da Nang</option><option value="502">Dak Lak</option><option value="503">Dak Nong</option><option value="504">Dien Bien</option><option value="505">Dong Nai</option><option value="506">Dong Thap</option><option value="507">Gia Lai</option><option value="508">Ha Giang</option><option value="509">Ha Nam</option><option value="486">Ha Noi</option><option value="510">Ha Tinh</option><option value="511">Hai Duong</option><option value="512">Hai Phong</option><option value="513">Hau Giang</option><option value="514">Hoa Binh</option><option value="515">Hue</option><option value="516">Hung Yen</option><option value="517">Khanh Hoa</option><option value="518">Kien Giang</option><option value="519">Kon Tum</option><option value="520">Lai Chau</option><option value="521">Lam Dong</option><option value="522">Lang Son</option><option value="523">Lao Cai</option><option value="524">Long An</option><option value="525">Nam Dinh</option><option value="526">Nghe An</option><option value="527">Ninh Binh</option><option value="528">Ninh Thuan</option><option value="548">Other</option><option value="529">Phu Tho</option><option value="530">Phu Yen</option><option value="531">Quang Binh</option><option value="532">Quang Nam</option><option value="533">Quang Ngai</option><option value="534">Quang Ninh</option><option value="535">Quang Tri</option><option value="536">Soc Trang</option><option value="537">Son La</option><option value="485">TP Ho Chi Minh</option><option value="538">Tay Ninh</option><option value="539">Thai Binh</option><option value="540">Thai Nguyen</option><option value="541">Thanh Hoa</option><option value="542">Tien Giang</option><option value="543">Tra Vinh</option><option value="544">Tuyen Quang</option><option value="545">Vinh Long</option><option value="546">Vĩnh Phuc</option><option value="547">Yen Bai</option></select>
+										<script type="text/javascript">
+                                            $('region_id').setAttribute('defaultValue', "485");
+                                        </script>
+										<input type="text" id="region" name="region" value="TP Hồ Chí Minh" title="City" class="input-text required-entry" style="display: none;">
+									</div>
+								</div>
+								<div class="field">
+									<label for="city" class="required"><em>*</em>District</label>
+									<div class="input-box input-box-city">
+										<select id="city" class="validate-select" name="city" title="District"><option data-id="" value="">Please select</option><option data-id="1" value="Quận 1">Quận 1</option><option data-id="2" value="Quận 2">Quận 2</option><option data-id="3" value="Quận 3">Quận 3</option><option data-id="4" value="Quận 4">Quận 4</option><option data-id="5" value="Quận 5">Quận 5</option><option data-id="6" value="Quận 6">Quận 6</option><option data-id="7" value="Quận 7">Quận 7</option><option data-id="8" value="Quận 8">Quận 8</option><option data-id="9" value="Quận 9">Quận 9</option><option data-id="10" value="Quận 10">Quận 10</option><option data-id="11" value="Quận 11">Quận 11</option><option data-id="12" value="Quận 12">Quận 12</option><option data-id="13" value="Huyện Bình Chánh">Huyện Bình Chánh</option><option data-id="14" value="Quận Bình Tân">Quận Bình Tân</option><option data-id="15" value="Quận Bình Thạnh">Quận Bình Thạnh</option><option data-id="16" value="Quận Gò Vấp">Quận Gò Vấp</option><option data-id="17" value="Quận Phú Nhuận">Quận Phú Nhuận</option><option data-id="18" value="Quận Tân Bình">Quận Tân Bình</option><option data-id="19" value="Quận Tân Phú">Quận Tân Phú</option><option data-id="20" value="Quận Thủ Đức">Quận Thủ Đức</option><option data-id="21" value="Huyện Cần Giờ">Huyện Cần Giờ</option><option selected="selected" data-id="22" value="Huyện Củ Chi">Huyện Củ Chi</option><option data-id="23" value="Huyện Hóc Môn">Huyện Hóc Môn</option><option data-id="24" value="Huyện Nhà Bè">Huyện Nhà Bè</option><option data-id="700" value="Other">Other</option></select>
+									</div>
+								</div>
+							</li>
+							<li class="fields" style="display:none;">
+								<div class="field">
+									<label for="zip" class="required"><em>*</em>Zip/Postal Code</label>
+									<div class="input-box">
+										<input type="text" name="postcode" value="80000" title="Zip/Postal Code" id="zip" class="input-text validate-zip-international  required-entry">
+									</div>
+								</div>
+								<div class="field">
+									<label for="country" class="required"><em>*</em>Country</label>
+									<div class="input-box">
+										<select title="Country" class="validate-select" id="country" name="country_id">
+																																						<option value="VN" selected="selected">
+									Vietnam								</option>
+																					</select>
+									</div>
+								</div>
+							</li>
+							<li class="control">
+								<input type="checkbox" name="change_password" id="change_password" value="1" onclick="setPasswordForm(this.checked)" title="Change Password"
+									class="checkbox"><label for="change_password">Change Password</label>
+							</li>
+							<input type="hidden" name="default_billing" value="1">
+							<input type="hidden" name="default_shipping" value="1">
+						</ul>
+					</div>
+					<div class="fieldset" style="display:none;">
+						<h2 class="legend">Change Password</h2>
+						<ul class="form-list">
+							<li>
+								<label for="current_password" class="required"><em>*</em>Current Password</label>
+								<div class="input-box">
+									<input type="text" class="input-text no-display" name="dummy" id="dummy">
+									<input type="password" title="Current Password" class="input-text" name="current_password" id="current_password">
+								</div>
+							</li>
+							<li class="fields">
+								<div class="field">
+									<label for="password" class="required"><em>*</em>New Password</label>
+									<div class="input-box">
+										<input type="password" title="New Password" class="input-text validate-password" name="password" id="password">
+									</div>
+								</div>
+								<div class="field">
+									<label for="confirmation" class="required"><em>*</em>Confirm New Password</label>
+									<div class="input-box">
+										<input type="password" title="Confirm New Password" class="input-text validate-cpassword" name="confirmation" id="confirmation">
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="fieldset" style="">
+						<h2 class="legend">Change Password</h2>
+						<ul class="form-list">
+							<li>
+								<label for="current_password" class="required"><em>*</em>Current Password</label>
+								<div class="input-box validation-error">
+									<input type="text" class="input-text no-display" name="dummy" id="dummy">
+									<input type="password" title="Current Password" class="input-text required-entry validation-failed" name="current_password"
+										id="current_password">
+									<div class="validation-advice" id="advice-required-entry-current_password">This is a required field.</div>
+								</div>
+							</li>
+							<li class="fields">
+								<div class="field">
+									<label for="password" class="required"><em>*</em>New Password</label>
+									<div class="input-box">
+										<input type="password" title="New Password" class="input-text validate-password required-entry" name="password" id="password">
+									</div>
+								</div>
+								<div class="field">
+									<label for="confirmation" class="required"><em>*</em>Confirm New Password</label>
+									<div class="input-box">
+										<input type="password" title="Confirm New Password" class="input-text validate-cpassword required-entry" name="confirmation"
+											id="confirmation">
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="buttons-set">
+						<p class="back-link"><a href="https://www.cgv.vn/en/customer/account/"><small>« </small>Back</a></p>
+						<button type="submit" title="Save" class="button"><span><span>Save</span></span></button>
+					</div>
+				</form>
+			</div>-->
+        </div>
+        <div class="col-left sidebar"></div>
+    </div>
+</div>

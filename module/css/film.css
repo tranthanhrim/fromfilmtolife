@@ -1,0 +1,110 @@
+body {
+    background: white;
+}
+
+.menu-title {
+    color: red;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 30px;
+}
+
+.list-of-movies {
+    width: 100%;
+    float: left;
+    padding: 0;
+    margin-left: 1%;
+}
+
+ul li {
+    cursor: pointer;
+}
+
+.span-ul-li-film {
+    width: 200px;
+    text-align: left;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+}
+
+ul.tab_img_cus {
+    padding: 0;
+    list-style: none;
+    position: relative;
+    padding: 0;
+}
+
+ul.tab_img_cus li {
+    float: left;
+    width: 200px;
+    height: 470px;
+    background: red;
+    margin: 0 2% 0 0;
+}
+
+.view.view-first img {
+    width: 100%;
+}
+
+ul.tab_img_cus li.last {
+    margin-right: 0;
+    padding: 0;
+}
+
+.toggle-tabs {
+    border-bottom: 2px solid #241d1e;
+    border-top: 2px solid #241d1e;
+    float: left;
+    min-height: 78px;
+    padding: 12px 0;
+    width: 100%;
+}
+
+.day {
+    border: 4px solid #717171;
+    border-radius: 5px;
+    color: #717171;
+    cursor: pointer;
+    height: 48px;
+    position: relative;
+    width: 77px;
+}
+
+.day-active {
+    background: #C4DFE6;
+    border: 4px solid #717171;
+    border-radius: 5px;
+    color: #717171;
+    cursor: pointer;
+    height: 48px;
+    position: relative;
+    width: 77px;
+}
+
+.theater-modal {
+    margin-top: 20px;
+    margin-bottom: 20px
+}
+
+#loading {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: block;
+    opacity: 0.7;
+    background-color: #fff;
+    z-index: 99;
+    text-align: center;
+}
+
+#loading-image {
+    /*position: absolute;*/
+    text-align: center;
+    top: 100px;
+    left: 240px;
+    z-index: 100;
+    margin-top: 150px;
+}

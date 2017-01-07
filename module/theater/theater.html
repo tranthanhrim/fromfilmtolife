@@ -1,0 +1,93 @@
+<div ng-controller="theaterController" class="theatre-list product-view" data-ng-init="vm.init()" style="height: 400px;">
+    <div class="product-collateral theatre-city-tabs" style="border-top: none;">
+        <div class="title-cgv-cinema">
+            <h1>ADR Movie system</h1>
+        </div>
+        <div class="wrap-city" flex>
+            <ul class="toggle-tabs" ng-init="vm.cityTab=0" style="position: relative; overflow: hidden; width: 100%;">
+                <div class="cycle-carousel-wrap" style="margin: 0px; padding: 0px; top: 0px; left: 0px; position: absolute;">
+                    <li ng-repeat="city in vm.data" ng-click="vm.changeCity(city.city_code, $index)">
+                        <span ng-class="{'span-city-name':$index===vm.cityTab}" style="font-size: 16px;">
+                            {{city.city_name}}</span>
+                    </li>
+                </div>
+            </ul>
+            <div class="center"><a title="Prev" id="prev" href="javascript: void(0);" class="disabled">&lt;&lt; Prev</a><a title="Next" id="next" href="javascript: void(0);">Next &gt;&gt;</a></div>
+        </div>
+        <dl class="collateral-theatre-city-tabs">
+            <dd class="tab-container current" style="margin-left: 50px; margin-right: 50px;">
+                <div class="tab-content">
+                    <ul class="theatre-tabs">
+                        <li ng-repeat="theater in vm.theaterToShow" ng-click="vm.showTheater(theater.code)">
+                            <span class="span-theater-name">{{theater.name}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+<div id="modalTheater" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    {{vm.theaterToShowModal.name}}</h4>
+            </div>
+            <div class="modal-body" style="padding: 0px;">
+                <div id="carousel" class="carousel slide carousel-fade" data-ride="carousel">
+                    <ol class="carousel-indicators" style="bottom: 70px">
+                        <li style="margin-left: 5px;" data-target="#carousel" ng-repeat="data in vm.theaterToShowModal.photos" data-slide-to="{{$index}}" ng-class="($index==0?'active':'')"></li>
+                    </ol>
+
+                    <div class="carousel-inner" role="listbox">
+                        <div ng-repeat="data in vm.theaterToShowModal.photos" ng-class="($index==0?'item active': 'item')">
+                            <img src="{{data.link}}" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+
+                <!--</div>-->
+                <div class="theater-infomation">
+                    <div class="left-info-theater">
+                        <div class="theater-left-content">
+                            <div class="theater-address">{{vm.theaterToShowModal.address}}</div>
+                            <div class="tel"><label>Tel : </label>
+                                <div class="tel-input" style="display: inline;">{{vm.theaterToShowModal.tel}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="right-info-theater">
+                        <div class="theater-right-content">
+                            <div class="location">
+                                <!--<a class="iframe cboxElement" href="{{vm.theaterToShowModal.map}}" ng-click="vm.showMap()">Xem bản đồ</a>-->
+                                <a class="iframe cboxElement" ng-click="vm.showMap()" style="cursor: pointer;">Map</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modalMap" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                      &times;</button>
+                <h4 class="modal-title" id="myModalLabel">
+                    {{vm.theaterToShowModal.name}}</h4>
+            </div>
+            <div class="modal-body" style="padding: 0px;">
+                <iframe frameborder="0" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d3833.907112497126!2d108.22947130000001!3d16.07030925!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x6c81c812834b1bdb!2zVHJ1bmcgVMOibSBUaMawxqFuZyBN4bqhaSBWaW5jb20gTmfDtCBRdXnhu4FuLcSQw6AgTuG6tW5n!5e0!3m2!1svi!2s!4v1435539932598"
+                    name="1480761888656" class="cboxIframe" allowfullscreen="true" style="width: 100%; height: 500px"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

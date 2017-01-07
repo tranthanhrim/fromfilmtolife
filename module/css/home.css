@@ -1,0 +1,42 @@
+.banner-right .caption {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    position: absolute;
+    right: 0;
+    width: 30%;
+    top: 0;
+    bottom: 0;
+    padding: 60px 25px 25px 25px;
+}
+
+.caption .desc {
+    overflow: hidden;
+    height: 13.6rem;
+    margin-bottom: 2.5rem;
+}
+
+.list-btn {
+    overflow: hidden;
+    text-align: center;
+}
+
+.account-name {
+    color: #636363;
+    font-size: 1em;
+    font-weight: 400;
+    margin-bottom: 0.5em;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.warning-input-register {
+    font-size: 12px;
+    color: red;
+    font-weight: 200;
+}
+
+.required-star {
+    color: red;
+    font-weight: 600;
+    margin-left: 10px;
+}

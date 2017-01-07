@@ -1,0 +1,82 @@
+<div ng-controller="filmController" data-ng-init="vm.init()">
+    <div layout="row">
+        <div flex="10"></div>
+        <ul class="tab_img_cus">
+            <li ng-repeat="film in vm.films" style="margin: 20px; border:gray solid 1px; background: white;" layout="column" flex>
+                <div class="view view-first" style="cursor: pointer;">
+                    <img src="{{film.photo}}" ng-click="vm.showDetailFilm(film)" class="img-responsive" alt="" style="max-width:100%; max-height:100%" />
+                    <div class="info1"> </div>
+                    <div class="mask">
+                    </div>
+                    <p class="span-ul-li-film">{{film.name}}</p>
+                    <p class="span-ul-li-film">Genre: <span style="font-weight: normal;">{{film.genre}}</span></p>
+                    <p class="span-ul-li-film">Running Time: <span style="font-weight: normal;">{{film.duration}}</span></p>
+                    <p class="span-ul-li-film">Release Date: <span style="font-weight: normal;">{{film.start_time}}</span></p>
+                </div>
+                <div flex></div>
+                <div class="tab_desc" ng-click="vm.showModalSchedule(film.name, film.code)">
+                    <a>Book Now</a>
+                </div>
+            </li>
+        </ul>
+        <div flex="10"></div>
+    </div>
+    <div class="modal fade" id="modalBooking" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" id="myModalLabel">{{vm.nameFilmBooking}}</h4>
+                </div>
+                <div class="modal-body">
+                    <ul class="nav nav-pills">
+                        <li ng-repeat="data in vm.typeOfFilm" ng-class="{'active': $index == 0}" ng-click="vm.changeFormatFilm(data.id)"><a data-toggle="pill">{{data.name}}</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="theatre-list">
+                            <div class="product-collateral toggle-content tabs theatre-city-tabs">
+                                <ul class="toggle-tabs nav nav-tabs">
+                                    <li class="theater-modal" ng-class="{'active': $index == 0}" ng-repeat="data in vm.filmSchedule" ng-click="vm.changeCityShowSchedule(data.cityCode)">
+                                        <a data-toggle="tab"><span>{{data.cityName}}</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="product-collateral toggle-content tabs session-tabs" style="background: none;">
+                            <ul class="toggle-tabs" ng-init="vm.dateIdSelected=0">
+                                <li ng-repeat="date in vm.scheduleToShow.date" ng-class="{'current':vm.dateIdSelected==$index}" ng-click="vm.changeDateShowSchedule(date.rawDate, $index)">
+                                    <div class="day" style="border: 2px solid #07575B;">
+                                        <span>{{date.day}}</span>
+                                        <em>{{date.dayOfWeek}}</em>
+                                        <strong>{{date.month}}</strong>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product-collateral toggle-content tabs session-tabs" style="background: none;">
+                            <ul class="session-list" ng-repeat="data in vm.scheduleToShow.schedule">
+                                <li class="area" style="padding: 0px 0px 25px 0px">
+                                    <div class="col-theater"><label>{{data.theaterName}}</label></div>
+                                    <div class="col-times">
+                                        <div class="type-hall">
+                                            <div class="info-timetable">
+                                                <ul>
+                                                    <li class="hvp-cinema-6" ng-repeat="data in data.time" ng-click="vm.bookTicket(data)">
+                                                        <a title="Cinema 6"><span class="session-detail-time">{{data.time}}</span><span class="session-detail-meridiem">{{data.period}}</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
