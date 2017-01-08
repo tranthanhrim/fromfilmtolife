@@ -22,7 +22,7 @@ filmApp.controller('seatController', function($scope, $window, $http, $state, $s
             $state.go('film-showing');
         }
         vm.scheduleInfo = $stateParams.scheduleInfo;
-        vm.roomInfo = $stateParams.roomInfo;
+        roomInfo = $stateParams.roomInfo;
 
         price = vm.scheduleInfo.price;
         var seatOfRow = new Array(roomInfo.col + 1).join('a');

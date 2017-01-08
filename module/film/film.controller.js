@@ -379,9 +379,19 @@ filmApp.controller('filmController', function($scope, $http, $state, $stateParam
             _.each(itemTheater.theaters, function(detailTheater) {
                 _.each(detailTheater.rooms, function(room) {
                     if (room.code === scheduleInfo.roomCode) {
-                        roomInfo.row = roomInfo.row === -1 ? room.number_row : roomInfo.row;
-                        roomInfo.col = roomInfo.col === -1 ? room.number_col : roomInfo.col;
-                        return;
+                        if (room.room_type === 0) {
+                            roomInfo.row = 5;
+                            roomInfo.col = 10;
+                        } else if (room.room_type === 1) {
+                            roomInfo.row = 8;
+                            roomInfo.col = 10;
+                        } else {
+                            roomInfo.row = 10;
+                            roomInfo.col = 10;
+                        }
+                        // roomInfo.row = roomInfo.row === -1 ? room.number_row : roomInfo.row;
+                        // roomInfo.col = roomInfo.col === -1 ? room.number_col : roomInfo.col;
+                        // return;
                     }
                 });
             });
